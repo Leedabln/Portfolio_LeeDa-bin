@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포트폴리오(이다빈)</title>
+    <link href="img/logo.png" rel="shortcut icon" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+        integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/fullpage.min.css">
+
+
+
+    <script src="js/jquery-3.7.0.min.js"></script>
+    <script src="js/fullpage.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"
+        integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+    <script>
+        $(function () {
+            var myFullpage = new fullpage('#fullpage', {
+                anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage', '5thPage'],
+                navigation: true,
+                navigationTooltips: ['Intro', 'About', 'Web Design', 'Graphic Design', 'Contact'],
+                navigationPosition: 'right',
+                showActiveTooltip: true,
+                scrollingSpeed: 1000, // 화면 전환 속도를 1000ms로 설정
+                easing: 'easeInOutCubic', // 부드러운 전환 효과
+                easingcss3: 'ease', // CSS 전환 효과
+                afterLoad: function (origin, destination, direction) {
+                    // 모든 항목에서 'active' 클래스 제거
+                    $("nav ul li").removeClass("active"); // 모든 항목에서 active 클래스 제거
+
+                    // 현재 섹션에 해당하는 항목에 'active' 클래스 추가
+                    if (destination.anchor == 'secondPage') {
+                        $("nav ul li a.aboutMenu").parent().addClass("active")
+                    } else if (destination.anchor == '3rdPage') {
+                        $("nav ul li a.wdMenu").parent().addClass("active")
+                    } else if (destination.anchor == '4thPage') {
+                        $("nav ul li a.gdMenu").parent().addClass("active")
+                    } else if (destination.anchor == '5thPage') {
+                        $("nav ul li a.contactMenu").parent().addClass("active")
+                    }
+                }
+            });
+
+            var swiper = new Swiper(".mySwiper", {
+                spaceBetween: 30,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 5500,
+                    disableOnInteraction: false,
+                },
+
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+
+            var $menuBar = $("header"); // 메뉴바 클래스에 맞게 수정
+            var $menuText = $("header ul li a");
+            var $menuLogo = $("header h1 a img");
+
+            var changeMenuBarColor = () => {
+                if (window.location.hash === "#3rdPage" || window.location.hash === "#4thPage") {  /* 페이지 */
+                    $menuBar.css("background-color", "white"); // 메뉴바 색상 변경
+                    $menuText.css("color", "black");
+                    $menuLogo.attr("src", "img/logo_black.png");
+                } else {
+                    $menuBar.css("background-color", "#A8C9FE"); // 기본 색상으로 복구
+                    $menuText.css("color", "white");
+                    $menuLogo.attr("src", "img/logo.png");
+                }
+            };
+
+            // 페이지 로드 시 색상 변경
+            changeMenuBarColor();
+
+            // URL 해시 변경 시 색상 변경
+            $(window).on("hashchange", changeMenuBarColor);
+
+            $("nav ul li a").on("click", function (e) {
+                $("nav ul li").removeClass("active"); // 모든 항목에서 active 클래스 제거
+                $(this).parent().addClass("active"); // 클릭된 항목에 active 클래스 추가
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <header>
+        <div class="inner">
+            <h1>
+                <a href="#"><img src="img/logo.png" alt="로고"></a>
+            </h1>
+            <nav>
+                <ul> <!-- 메뉴 영역  -->
+                    <li><a href="#secondPage" class="aboutMenu">About</a></li>
+                    <li><a href="#3rdPage" class="wdMenu">Web Design</a></li>
+                    <li><a href="#4thPage" class="gdMenu">Graphic Design</a></li>
+                    <li><a href="#5thPage" class="contactMenu">Contact</a></li>
+                </ul>
+            </nav>
+        </div><!--inner end  -->
+    </header>
+    <div id="fullpage">
+        <!-- intro -->
+        <div class="section" id="section0">
+            <div class="main_visual" id="page1">
+                <figure>
+                    <img src="img/Group 59 (1).png" alt="main">
+                    <div class="move_box">
+                        <p></p><!-- 움직임이 있는 별 이미지 -->
+                        <p class="p2"></p><!-- 움직임이 있는 별 이미지 -->
+
+                    </div><!-- move_box end -->
+                </figure>
+            </div><!--main_visual - page1  end  -->
+        </div>
+        <!-- intro -->
+        <!-- about -->
+        <div class="section" id="section1">
+            <div class="about" id="page2">
+                <div class="inner">
+                    <div class="profile_imagebox">
+                        <div class="imagebox">
+                            <figure>
+                                <img src="img/증명사진_이다빈.jpg" alt="프로필"> 
+                            </figure>
+                        </div><!-- .imagebox end -->
+                        <div class="profile_btn">
+                            <div class="resume_btn">
+                                <a href="img/이력서.pdf" target="_blank"> <!-- 이력서 링크 -->
+                                    <span>이력서 PDF</span>
+                                </a>
+                            </div><!-- .resume_btn end -->
+
+                            <div class="portfolio_btn">
+                                <a href="img/portfolio.pdf" target="_blank"> <!-- Portfolio 링크 -->
+                                    <span>포토폴리오 PDF</span>
+                                </a>
+                            </div>
+                        </div><!-- .profile_btn end -->
+                    </div><!-- .profile_imagebox -->
+
+                    <div class="profile_box">
+                        <div class="title">
+                            <h2>PROFILE :</h2>
+                        </div><!-- .title end -->
+                        <div class="profile_info">
+                            <div class="left_info">
+                                <div class="info name">
+                                    <p>NAME</p>
+                                    <strong>이다빈</strong>
+                                </div><!-- .name end -->
+                                <div class="info birth">
+                                    <p>BIRTH </p>
+                                    <strong>2001. 10. 11</strong>
+                                </div><!-- .birth end -->
+                                <div class="info base">
+                                    <p>BASE </p>
+                                    &nbsp;<strong>부산</strong>
+                                </div><!-- .base end -->
+                            </div><!-- .left_info end -->
+
+                            <div class="right_info">
+                                <div class="info phone">
+                                    <p>PHONE </p>
+                                    <strong>010-6650-5089</strong>
+                                </div><!-- .phone end -->
+                                <div class="info email">
+                                    <p>EMAIL </p>
+                                    &nbsp;<strong>22ekqls@naver.com</strong>
+                                </div><!-- .email end -->
+                            </div><!-- .rignt_info end -->
+
+                        </div><!-- .profile_info end -->
+
+                        <div class="profile_education">
+                            <div class="title">
+                                <h2>EDUCATION :</h2>
+                            </div>
+                            <div class="education_info">
+                                <p>2025. 01</p>
+                                <strong>그린컴퓨터 아카데미 UI/UX 반응형 웹디자인 & 웹퍼블리셔 양성과정, <span>수료</span></strong>
+                            </div><!-- .education_info end -->
+                            <div class="education_info2">
+                                <p>2020. 02</p>
+                                <strong>거제여자상업고등학교, <span>졸업</span></strong>
+                            </div><!-- education_info2 end-->
+                        </div><!-- .profile_education end -->
+
+                        <div class="profile_skill">
+                            <h2>SKILL :</h2>
+                            <div class="skill_wrap">
+                                <div class="skill_icon visual studio">
+                                    <figure>
+                                        <img src="img/visual studio.png" alt="visual studio">
+                                    </figure>
+                                </div><!-- visual studio  -->
+
+                                <div class="skill_icon ai">
+                                    <figure>
+                                        <img src="img/Ai.png" alt="ai">
+                                    </figure>
+                                </div><!-- ai  -->
+
+                                <div class="skill_icon visual figma">
+                                    <figure>
+                                        <img src="img/figma.png" alt="figma">
+                                    </figure>
+                                </div><!-- figma  -->
+
+                                <div class="skill_icon ps">
+                                    <figure>
+                                        <img src="img/ps.png" alt="ps">
+                                    </figure>
+                                </div><!-- ps -->
+
+                                <div class="skill_icon html">
+                                    <figure>
+                                        <img src="img/html.png" alt="html">
+                                    </figure>
+                                </div><!-- html -->
+
+                                <div class="skill_icon css">
+                                    <figure>
+                                        <img src="img/css.png" alt="css">
+                                    </figure>
+                                </div><!-- css -->
+
+                                <div class="skill_icon js">
+                                    <figure>
+                                        <img src="img/js.png" alt="js">
+                                    </figure>
+                                </div><!-- js -->
+
+                            </div><!-- .skill_wrap end -->
+                        </div><!-- .profile_skill end -->
+                    </div><!-- .profile_box end -->
+                </div><!-- .inner end -->
+            </div><!--about - page2  end  -->
+        </div>
+        <!-- about -->
+        <!-- content -->
+        <div class="section" id="section2">
+
+            <div class="content" id="page3">
+                <h2>Web Design</h2>
+
+                <!-- cont1 💛 -->
+                <div class="cont cont1">
+                    <div class="mockupimg">
+                        <span></span>
+                        <p>스크린에 마우스를 올려보세요!</p>
+                    </div><!--mockupimg end  -->
+                    <div class="Tablet_mockup">
+                        <span class="scroll"></span>
+                    </div><!-- Tablet_mockup end -->
+
+                    <div class="info_text">
+                        <h4>잭슨카멜레온</h4>
+                        <p>가구 브랜드 ‘잭슨카멜레온’ 반응형 홈페이지 리뉴얼 입니다. <br>
+                            웹 화면은 데스크, 테블릿까지 구현되었고 디자인 제작은 <br>
+                            데스크, 테블릿, 모바일 까지 구현하였습니다.</p>
+
+                        <ul>
+                            <li>
+                                <span>프로젝트:</span>
+                                <span>반응형, 웹사이트 리뉴얼</span>
+                            </li>
+                            <li>
+                                <span>사용언어:</span>
+                                <span>html, css, Javascript, Jquery</span>
+                            </li>
+                            <li>
+                                <span>프로그램:</span>
+                                <span>Visual Studio Code, figma, photoshop </span>
+                            </li>
+                            <li>
+                                <span>참여도:</span>
+                                <span>기획, 디자인, 퍼블리싱 100%</span>
+                            </li>
+                        </ul>                        
+                        <div class="btn">
+                            <a href="img/잭슨카멜레온_PROCESS.pdf" target="_blank">PROCESS</a> <!-- ✅ 링크 -->
+                            <a href="https://leedabln.github.io/Jackson-Chameleon/" target="_blank">WEBSITE</a>
+                            <!-- ✅ 링크 -->
+                        </div><!-- .btn end -->
+                    </div><!-- .info_text end -->
+                </div><!-- cont contl end -->
+
+
+
+                <!-- cont2 💛 -->
+                <div class="cont cont2">
+                    <div class="mockupimg">
+                        <span></span>
+                        <p>스크린에 마우스를 올려보세요!</p>
+                    </div><!--mockupimg end  -->
+
+
+                    <div class="info_text">
+                        <h4>마크곤잘레스</h4>
+                        <p>패션 브랜드 ‘마크곤잘레스’ 홈페이지 리뉴얼 입니다.</p>
+
+                        <ul>
+                            <li>
+                                <span>프로젝트:</span>
+                                <span>웹사이트 리뉴얼</span>
+                            </li>
+                            <li>
+                                <span>사용언어:</span>
+                                <span>html, css, Javascript</span>
+                            </li>
+                            <li>
+                                <span>프로그램:</span>
+                                <span>Visual Studio Code, figma, photoshop </span>
+                            </li>
+                            <li>
+                                <span>참여도</span>
+                                <span>기획, 디자인, 퍼블리싱 100%</span>
+                            </li>
+                        </ul>
+
+                        <div class="btn">
+                            <a href="https://www.figma.com/design/gHoH6njzP34glydiyJvTaw/%EB%A7%88%ED%81%AC%EA%B3%A4%EC%9E%98%EB%A0%88%EC%8A%A4_%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84(%EC%9D%B4%EB%8B%A4%EB%B9%88)?node-id=0-1&p=f&t=UXqF18RVxGcRLyXr-0"
+                                target="_blank">FIGMA</a> <!-- ✅ 링크 -->
+                            <a href="https://leedabln.github.io/marksite/" target="_blank">WEBSITE</a><!-- ✅ 링크 -->
+                        </div><!-- .btn end -->
+                    </div><!-- .info_text end -->
+                </div><!-- cont contl end -->
+
+
+                <!-- cont3 💛 -->
+
+                <div class="cont cont3">
+                    <div class="mockupimg">
+                        <span></span>
+                        <p>스크린에 마우스를 올려보세요!</p>
+                    </div><!--mockupimg end  -->
+
+
+                    <div class="info_text">
+                        <h4>블루샥</h4>
+                        <p>카페 프랜차이즈 ‘블루샥’ 홈페이지 리뉴얼입니다.</p>
+
+                        <ul>
+                            <li>
+                                <span>프로젝트:</span>
+                                <span>웹사이트 리뉴얼</span>
+                            </li>
+                            <li>
+                                <span>사용언어:</span>
+                                <span>html, css</span>
+                            </li>
+                            <li>
+                                <span>프로그램:</span>
+                                <span>Visual Studio Code, miricanvas, photoshop</span>
+                            </li>
+                            <li>
+                                <span>참여도</span>
+                                <span>기획, 디자인, 퍼블리싱 100%</span>
+                            </li>
+                        </ul>
+
+                        <div class="btn">
+                            <a href="img/블루샥_PROCESS.pdf" target="_blank">PROCESS</a><!-- ✅ 링크 -->
+                            <a href="https://leedabln.github.io/Blue-Shark/" target="_blank">WEBSITE</a><!-- ✅ 링크 -->
+                        </div><!-- .btn end -->
+                    </div><!-- .info_text end -->
+                </div><!-- cont contl end -->
+
+                <!-- cont4 💛 -->
+
+                <div class="cont cont4">
+                    <div class="mockupimg">
+                        <span></span>
+                        <p>스크린에 마우스를 올려보세요!</p>
+                    </div><!--mockupimg end  -->
+
+
+                    <div class="info_text">
+                        <h4>백상갤러리샵</h4>
+                        <p>현대미술 전시 ‘백상 갤러리샵 ’ 반응형 홈페이지 모작입니다.</p>
+
+                        <ul>
+                            <li>
+                                <span>프로젝트:</span>
+                                <span>웹사이트 모작</span>
+                            </li>
+                            <li>
+                                <span>사용언어:</span>
+                                <span>html, css</span>
+                            </li>
+                            <li>
+                                <span>프로그램:</span>
+                                <span>Visual Studio Code</span>
+                            </li>
+                            <li>
+                                <span>참여도</span>
+                                <span>기획, 디자인, 퍼블리싱 50%</span>
+                            </li>
+                        </ul>
+
+                        <div class="btn">
+                            <a href=" https://leedabln.github.io/-Baeksang_Gallery_Shop/"
+                                target="_blank">WEBSITE</a><!-- ✅ 링크 -->
+                        </div><!-- .btn end -->
+                    </div><!-- .info_text end -->
+                </div><!-- cont contl end -->
+
+
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="cont cont5">
+                                <div class="mockupimg">
+                                    <span></span>
+                                </div><!--mockupimg end  -->
+
+                                <div class="info_text">
+                                    <h4>무신사 [모바일]</h4>
+                                    <p>패션 브랜드 ‘무신사’ 모바일 앱 모작입니다</p>
+
+                                    <ul>
+                                        <li class="liin_img">
+                                            <img src="img/lien.png" alt="라인선">
+                                        </li>
+
+                                        <li class="liin_text">
+                                            <ul>
+                                                <li>모바일 앱 모작</li>
+                                                <li>기획, 디자인 100%</li>
+                                                <li>figma 활용</li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="QR" style="margin-top: 70px;">
+                                            <img src="img/Musinsa_gr.png" alt="무신사 큐알">
+                                            <p>QR 코드로 더 생생한 콘텐츠를 만나보세요!</p>
+                                        </li>
+                                    </ul>
+
+                                    <div class="btn">
+                                        <a href="https://www.figma.com/proto/Imy6KggI43R1jsogPcMGG4/%EB%AC%B4%EC%8B%A0%EC%82%AC(%EB%AA%A8%EB%B0%94%EC%9D%BC_%EB%AA%A8%EC%9E%91)?node-id=182-1953&t=Rzg6J2b5RE9vXVNY-0&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=170%3A3891"
+                                            target="_blank">PROTOTYPING</a><!-- ✅ 링크 -->
+                                    </div><!-- .btn end -->
+                                </div><!--info_text end  -->
+                            </div><!-- cont cont5 end -->
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="cont cont6">
+                                <div class="mockupimg">
+                                    <span></span>
+                                </div><!--mockupimg end  -->
+
+                                <div class="info_text">
+                                    <h4>배달의 민족 [모바일]</h4>
+                                    <p>배달 주문 서비스 어플 ‘배달의 민족’ 모바일 모작입니다</p>
+
+                                    <ul>
+                                        <li class="liin_img">
+                                            <img src="img/lien.png" alt="라인선">
+                                        </li>
+
+                                        <li class="liin_text">
+                                            <ul>
+                                                <li>모바일 앱 모작</li>
+                                                <li>기획, 디자인 100%</li>
+                                                <li>figma 활용</li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="QR" style="margin-top: 70px;">
+                                            <img src="img/Baedal_Minjok_QR.png" alt="배달의민족 큐알"> <!-- 배민큐알로 변경하기 -->
+                                            <p>QR 코드로 더 생생한 콘텐츠를 만나보세요!</p>
+                                        </li>
+                                    </ul>
+
+                                    <div class="btn">
+                                        <a href="https://www.figma.com/proto/bLyXED0Umuv3MJlQWemHb8/%EB%B0%B0%EB%8B%AC%EC%9D%98-%EB%AF%BC%EC%A1%B1-(%EB%AA%A8%EB%B0%94%EC%9D%BC_%EB%AA%A8%EC%9E%91)?node-id=1-84&t=6QGpThMa297S5bjd-0&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A84"
+                                            target="_blank">PROTOTYPING</a><!-- ✅ 링크 -->
+                                    </div><!-- .btn end -->
+                                </div><!--info_text end  -->
+                            </div><!-- cont cont5 end -->
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div><!--content / page3  -->
+        </div><!--section2  -->
+
+        <div class="section" id="section3">
+            <div class="design" id="page4">
+                <h2>Graphic Design</h2>
+
+                <div class="inner">
+                    <p>Photoshop & Illustrator로 디자인한 작업물입니다.</p>
+                    <p class="small">(클릭시 이미지가 확대됩니다.)</p>
+                </div><!--inner end  -->
+
+                <div class="list">
+                    <a href="img/Design-1.jpg" data-fancybox="images" data-caption="illustrator">
+                        <img src="img/Design-1.jpg" alt="일러스트 작품">
+                    </a>
+                    <a href="img/Design-2.jpg" data-fancybox="images" data-caption="illustrator">
+                        <img src="img/Design-2.jpg" alt="일러스트 작품">
+                    </a>
+                    <a href="img/Design-3.jpg" data-fancybox="images" data-caption="illustrator">
+                        <img src="img/Design-3.jpg" alt="일러스트 작품">
+                    </a>
+                    <a href="img/Design-4.png" data-fancybox="images" data-caption="photoshop">
+                        <img src="img/Design-4.png" alt="일러스트 작품">
+                    </a>
+                    <a href="img/Design-5.png" data-fancybox="images" data-caption="photoshop">
+                        <img src="img/Design-5.png" alt="일러스트 작품">
+                    </a>
+                    <a href="img/Desian-6.png" data-fancybox="images" data-caption="photoshop">
+                        <img src="img/Desian-6.png" alt="일러스트 작품">
+                    </a>
+                    <a href="img/Design-7.png" data-fancybox="images" data-caption="photoshop">
+                        <img src="img/Design-7.png" alt="포토샵 작품">
+                    </a>
+                    <a href="img/Design-8.png" data-fancybox="images" data-caption="illustrator">
+                        <img src="img/Design-8.png" alt="포토샵 작품">
+                    </a>
+                    <a href="img/Design-9.png" data-fancybox="images" data-caption="illustrator">
+                        <img src="img/Design-9.png" alt="포토샵 작품">
+                    </a>
+                    <a href="img/Design-10.png" data-fancybox="images" data-caption="illustrator">
+                        <img src="img/Design-10.png" alt="포토샵 작품">
+                    </a>
+                </div><!--list end  -->
+            </div><!-- Design / page4 -->
+        </div><!-- section3  -->
+
+
+
+        <div class="section" id="section4">
+            <div class="Contact" id="page4">
+                <div class="inner">
+                    <div class="typing">
+                        <h4>
+                            <span>T</span>
+                            <span>H</span>
+                            <span>A</span>
+                            <span>N</span>
+                            <span>K</span>
+                            <span>Y</span>
+                            <span>O</span>
+                            <span>U</span>
+                            <span>😀</span>
+                        </h4>
+                    </div><!-- typing end -->
+
+                    <div class="info">
+                        <h3>Contact Me</h3>
+                        <div class="cont">
+                            <button class="qr">
+                                <img src="img/kakaotalk.png" alt="카카오톡 큐알"
+                                    onclick="window.open('https://open.kakao.com/o/s0bdDvah')"><!-- ✅ 링크 -->
+                                <p>click!</p>
+                            </button>
+                            <div class="text">
+                                <ul>
+                                    <li>
+                                        <span class="list">Name :</span>
+                                        <span class="list_cont">이다빈</span>
+                                    </li>
+                                    <li>
+                                        <span class="list">Phone :</span>
+                                        <span class="list_cont">010-6650-5089</span>
+                                    </li>
+                                    <li>
+                                        <span class="list">Email :</span>
+                                        <span class="list_cont">22ekqls@naver.com </span>
+                                    </li>
+                                </ul>
+                            </div><!-- text end -->
+                        </div><!-- cont end -->
+
+                        <div class="buttons">
+                            <button class="github" onclick="window.open('')">GITHUB <!-- ❗❗❗❗ 깃허브 주소 넣기 -->
+                                바로가기 </button>
+                            <button class="resume" onclick="window.open('img/이력서.pdf')">이력서 보기 <!-- ❗❗❗❗ 사람인 이력서 주소 넣기 -->
+                                바로가기 </button>
+                        </div><!-- buttons -->
+                    </div><!-- info end -->
+                </div><!--inner end  -->
+
+                <div class="copyright">
+                    <h5>© 2024 Dabin Lee. All Rights Reserved.</h5>
+                </div>
+                <!-- 저작권  -->
+
+
+            </div><!-- Contact /  page5-->
+        </div><!--section4-->
+
+
+
+    </div><!----------- fullpage --------------- -->
+</body>
+
+</html>
